@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Design Tokens — Operabase */
+  --brand-primary: #4ade80;
+  --brand-secondary: #a78bfa;
+  --brand-accent: #4ade80;
+  --brand-bg: #0c0c0c;
+  --brand-bg-alt: #080808;
+  --brand-surface: #141414;
+  --brand-border: #252525;
+  --brand-border-subtle: #1e1e1e;
+  --brand-text: #ffffff;
+  --font-heading: 'Space Grotesk';
+  --font-body: 'Inter';
+}
+
+body {
+  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  background-color: var(--brand-bg);
+  color: var(--brand-text);
+  overflow-x: hidden;
+  letter-spacing: -0.01em;
+}
+
+h1, h2, h3, .font-heading {
+  font-family: var(--font-heading), system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.04em;
+}
+
+/* Hero background grid */
+.pixel-grid {
+  background-image: linear-gradient(to right, var(--brand-border-subtle) 1px, transparent 1px),
+                    linear-gradient(to bottom, var(--brand-border-subtle) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* Animated scan line */
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+.scan-line {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, transparent, var(--brand-accent), transparent);
+  opacity: 0.05;
+  animation: scan 10s linear infinite;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Glass morphism card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--brand-bg); }
+::-webkit-scrollbar-thumb { background: var(--brand-surface); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--brand-accent); }
+
+/* WCAG Focus visible */
+*:focus-visible {
+  outline: 2px solid var(--brand-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--brand-accent);
+  outline-offset: 3px;
+}
